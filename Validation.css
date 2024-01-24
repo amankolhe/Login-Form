@@ -1,0 +1,50 @@
+
+/* .form-control{
+    width: 40% !important;
+}
+.form-select{
+    width: 40% !important;
+} */
+/* .error {
+    color: red;
+}
+.form-item{
+    display: flex;
+
+}
+.form-item input{
+    margin:0px 10px;
+   
+} */
+.bg-color {
+    background-color: rgba(219, 216, 216, 0.5);
+    width: 60%;
+    padding: 20px;
+    margin: 0 230px;
+    
+}
+.grid-container{
+    display: grid;
+    place-items: center;
+}
+.nav-padding{
+    padding: 7px 0px;
+}
+.sign-margin{
+    text-align: center;
+ }
+.footer-color span{
+    color: red;
+}
+.footer-color{
+    font-size: 12px;
+}
+
+@media (max-width:768px){
+    .bg-color {
+        margin: 0px;
+        width: 100%;  
+    }
+   
+}
+  

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css"
+    integrity="sha512-dUOcWaHA4sUKJgO7lxAQ0ugZiWjiDraYNeNJeRKGOIpEq4vroj1DpKcS3jP0K4Js4v6bXk31AAxAxaYt3Oi9xw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+  <link rel="stylesheet" href="LoginPage.css" />
+  <title>Login details</title>
+</head>
+
+<body>
+
+  <nav class="navbar-expand-lg bg-body-tertiary nav-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12">
+          <div class="text-center">
+            <img src="./image/Dthrill.png" width="20%" height="50px" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ---------------------form------------------- -->
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12">
+        <div class="sign-margin">
+          <h3>Login / SignUp</h3>
+        </div>
+
+        <form name="myForm" onsubmit="return validForm()" method="post" class="bg-color">
+          <div class="pt-3">
+            <label for="companyname">Email Id :</label>
+            <input type="text" placeholder="Email Id" name="login" class="form-control">
+          </div><br>
+
+          <div>
+            <label>Password : </label>
+            <input type="password" placeholder="Password" name="pass" id="passwordField" class="form-control">
+            <i class="ri-eye-off-line eye-icon" id="togglePassword" style="margin-left: -30px; cursor: pointer;"
+              onclick="togglePasswordField()"></i>
+          </div><br>
+
+
+
+
+
+                <form name="myForm" onsubmit="return validForm()" method="post" class="bg-color">
+                  <!-- your existing form fields -->
+
+                  <!-- Add social media icons -->
+                  
+
+
+
+
+
+
+
+
+
+                  <!-- Hidden OTP input initially -->
+                  <div id="otpInputContainer" style="display: none;">
+                    <label>Enter OTP : </label>
+                    <input type="text" placeholder="Enter verification code" name="otp" class="form-control">
+                  </div><br>
+
+                  <div>
+                    <input type="checkbox" name="exist" value="">
+                    <span>Already exist</span>
+                    <input type="checkbox" name="create" value="">
+                    <span><a href="#">Create new account</a></span>
+                  </div><br>
+                  <div class="grid-container">
+                    <input type="button" value="Submit" class="btn btn-dark" onclick="handleSubmit()">
+                  </div>
+
+
+                  <div class="text-center mt-4">
+                    <i style="font-size: 30px;" class="fab fa-google social-icon" onclick="redirectToSocialLogin('google')"></i> &nbsp;&nbsp;
+                    <i style="font-size: 30px;" class="fab fa-facebook social-icon" onclick="redirectToSocialLogin('facebook')"></i>&nbsp;&nbsp;
+                    <i style="font-size: 30px;" class="fab fa-twitter social-icon" onclick="redirectToSocialLogin('twitter')"></i>
+                  </div>
+
+
+                </form>
+
+
+
+
+
+
+                <div id="loadingSpinner">
+                  Loading...
+                </div>
+                <footer class="text-center mt-4">
+                  <div class="footer-color">
+                    <p>©Copyright 2024 <span>DThrill </span> All Rights Reserved.</p>
+                  </div>
+                </footer>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            let submitCount = 0;
+
+            function validForm() {
+              let login = document.forms["myForm"]["login"].value;
+              let pass = document.forms["myForm"]["pass"].value;
+
+              // Email validation regex
+              let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+              if (login.trim() === "") {
+                alert("Email must be filled out");
+                return false;
+              }
+
+              if (!emailRegex.test(login.trim())) {
+                alert("Please enter a valid email address");
+                return false;
+              }
+
+              if (pass.trim() === "") {
+                alert("Password must be filled out");
+                return false;
+              }
+
+              if (submitCount === 2) {
+                let otp = document.forms["myForm"]["otp"].value;
+                if (otp.trim() === "") {
+                  alert("OTP must be filled out");
+                  return false;
+                }
+              }
+
+              alert("Form submitted successfully!");
+              window.location.href = "CompanyDetails.html";
+              return false;
+            }
+
+            function handleSubmit() {
+              submitCount++;
+              document.getElementById("loadingSpinner").style.display = "block";
+
+              setTimeout(function () {
+                document.getElementById("loadingSpinner").style.display = "none";
+
+                if (submitCount === 1) {
+                  document.getElementById("otpInputContainer").style.display = "block";
+                } else if (submitCount === 2) {
+                  if (!validForm()) {
+                    submitCount--;
+                    return;
+                  }
+
+                  alert("OTP validation successful!");
+                  window.location.href = "CompanyDetails.html";
+                }
+              }, 1500);
+            }
+
+            function togglePasswordField() {
+              var passwordField = document.getElementById("passwordField");
+              var togglePasswordIcon = document.getElementById("togglePassword");
+
+              if (passwordField.type === "password") {
+                passwordField.type = "text";
+                togglePasswordIcon.classList.remove("ri-eye-off-line");
+                togglePasswordIcon.classList.add("ri-eye-line");
+              } else {
+                passwordField.type = "password";
+                togglePasswordIcon.classList.remove("ri-eye-line");
+                togglePasswordIcon.classList.add("ri-eye-off-line");
+              }
+            }
+
+
+            function generateOTP() {
+              const digits = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+';
+              let OTP = '';
+              for (let i = 0; i < 6; i++) {
+                OTP += digits[Math.floor(Math.random() * 10)];
+              }
+              return OTP;
+            }
+
+            console.log("OTP of 6 digits: ")
+            console.log(generateOTP());
+          </script>
+
+          <script>
+            // ... (your existing JavaScript code)
+
+            // Function to redirect to social login based on the selected platform
+            function redirectToSocialLogin(platform) {
+              switch (platform) {
+                case 'google':
+                  window.location.href = 'https://www.google.com'; // Replace with your Google login URL
+                  break;
+                case 'facebook':
+                  window.location.href = 'https://www.facebook.com'; // Replace with your Facebook login URL
+                  break;
+                case 'twitter':
+                  window.location.href = 'https://www.twitter.com'; // Replace with your Twitter login URL
+                  break;
+                default:
+                  break;
+              }
+            }
+          </script>
+
+
+
+
+</body>
+
+</html>
