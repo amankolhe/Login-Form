@@ -95,6 +95,27 @@
                     <input type="button" value="Submit" class="btn btn-dark" onclick="handleSubmit()">
                   </div>
 
+                  <div class="mt-4">
+              <h6>Or continue with</h6>
+            </div>
+
+            <style>
+              h6 {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+              }
+
+              h6:before,
+              h6:after {
+                content: "";
+                flex: 1 1;
+                border-bottom: 1px solid #000;
+                text-align: center;
+                margin: 0 5px;
+              }
+            </style>
+
 
                   <div class="text-center mt-4">
                     <i style="font-size: 30px;" class="fab fa-google social-icon" onclick="redirectToSocialLogin('google')"></i> &nbsp;&nbsp;
