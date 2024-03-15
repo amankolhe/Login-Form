@@ -3,7 +3,7 @@
     padding: 0;
 }
 .bg-color {
-    background-color: r  gba(219, 216, 216, 0.5);
+    background-color: rgba(219, 216, 216, 0.5);
     /* width: 52%; */
     padding: 20px;
     margin: 0 230px;
